@@ -1,0 +1,40 @@
+#next{
+	border:0;
+	padding:10px 20px;
+	border-radius:10px;
+	background-color:#FF4B37;
+	color:white;
+	font-size:16px;
+	position: fixed;
+	right: 10px;
+
+}
+.object{
+	border:0;
+	padding:10px 20px;
+	border-radius:10px;
+	background-color:#1F9E40;
+	color:white;
+	font-size:16px;
+	position: fixed;
+}
+#mechparts{
+	top:60;
+}
+#elecparts{
+	top:120;
+}
+#grants{
+	top:180;
+}
+#control{
+	top:240;
+}
+#code{
+	top:300;
+}
+#day{
+	background-color:#FF4B37;
+	right: 10px;
+	top: 50;
+}

@@ -1,0 +1,29 @@
+Team Members:
+
+	Programmers:
+		Produces:
+			Autonomous
+			Teleoporated
+			
+	Mechanics:
+		Produces:
+			Arms
+			Elevator
+			Drive Train				
+	PR Members:
+		Produces:
+			Grants
+			Members
+			Publicity
+	Electricians:
+		Produces:
+			Motors
+			Sensors
+			Pneumatics
+	Mentors:
+		Produces:
+			Control
+			Knowledge
+			Connections
+	P + M + E = Robot
+	

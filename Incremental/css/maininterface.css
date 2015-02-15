@@ -1,0 +1,118 @@
+.add{
+	border:0;
+	padding:10px 20px;
+	border-radius:10px;
+	background-color:#539B9E;
+	color:white;
+	font-size:16px;
+	position: fixed;
+	left: 550px;
+
+}
+
+.sub{
+	border:0;
+	padding:10px 20px;
+	border-radius:10px;
+	background-color:#CC4643;
+	color:white;
+	font-size:16px;
+	position: fixed;
+    left: 502px;
+}
+
+.member{
+	border:0;
+	padding:10px 20px;
+	border-radius:10px;
+	background-color:#649E72;
+	color:white;
+	font-size:16px;
+	position: fixed;
+	left: 600;
+}
+#membertotal{
+    top: 70px;
+    left: 250px;
+	background-color:#FFA93C;
+}
+#mechmembers{
+	top: 70px;   
+}
+#promembers{
+	top: 30px;
+}
+#prmembers{
+	top: 110px;
+}
+#elecmembers{
+	top: 150px;
+}
+#mentormembers{
+	top: 190px;
+}
+#addPro {
+	top: 30px;
+}
+#subPro{
+	top: 30px;
+}
+
+#addMech {
+	top: 70px;
+}
+#subMech{
+	top: 70px;
+}
+
+#addPR {
+	top: 110px;
+}
+#subPR{
+	top: 110px;
+}
+#addElec {
+	top: 150px;
+}
+#subElec{
+	top: 150px;
+}
+#addMentor {
+	top: 190px;
+}
+#subMentor{
+	top: 190px;
+}
+#send{
+	border:0;
+	padding:20px 30px;
+	border-radius:10px;
+	background-color:#FFA93C;
+	color:white;
+	font-size:16px;
+	position: absolute;
+	left: 540px;
+	top: 240px;
+}
+.memberList{
+	color:black;
+	position:absolute;
+	font-size:20px;
+ 
+	left:390px;
+}
+#proText{
+	top:36px;
+}
+#mechText{
+	top:76px;
+}
+#prText{
+top:116px;
+}
+#elecText{
+top:156px;
+}
+#mentorText{
+top:196px;
+}
