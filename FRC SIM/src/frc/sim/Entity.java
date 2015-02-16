@@ -39,9 +39,11 @@ public class Entity {
         int mouseX = p2.x - p.x;
         int mouseY = p2.y - p.y;
         
-        if (box().contains(mouseX, mouseY) && !mouseWasIn) {
-            mouseEnter();
-            mouseWasIn = true;
+        if (box().contains(mouseX, mouseY)) {
+            if (!mouseWasIn) {
+                mouseEnter();
+                mouseWasIn = true;
+            }
         } else if (mouseWasIn) {
             mouseLeave();
             mouseWasIn = false;
@@ -54,9 +56,7 @@ public class Entity {
         }
     }    
           
-    public void mouseEnter() {
-        mouseWasIn = true;
-    }
+    public void mouseEnter() {}
     
     public void mouseLeave() {}
     
