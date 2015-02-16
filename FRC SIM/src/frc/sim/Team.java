@@ -33,7 +33,7 @@ public class Team {
             number = Util.randomInt(10, 5000);
         } while (isNumberTaken(number));
         
-        Team t = new Team(Generator.genName(), number, new Color(Util.randomInt(0, 255), Util.randomInt(0, 255),Util.randomInt(0, 255)));               
+        Team t = new Team(Generator.genTeamName(), number, new Color(Util.randomInt(0, 255), Util.randomInt(0, 255),Util.randomInt(0, 255)));               
         List<Person> members = new ArrayList<>();
         for (int i=0; i < Util.randomInt(10, (int) 25); i++) {
             members.add(Person.generatePerson(t));
