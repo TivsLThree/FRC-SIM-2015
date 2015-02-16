@@ -28,8 +28,15 @@ public class Person extends Entity {
         g.fillRect(x + (image.getWidth(null) / 2) - 2, y + image.getHeight(null) - 1, 3, 10);
         g.setColor(oldColor);
         g.drawRect(x + (image.getWidth(null) / 2) - 2, y + image.getHeight(null) - 1, 3, 10);
-        Util.drawCentered(g, name + " the " + role.toString(), x + (image.getWidth(null) / 2), y - 30);
-        Util.drawCentered(g, team.name, x + (image.getWidth(null) / 2), y - 15);
+    }
+    
+    public void drawWithData(Graphics2D g) {
+        draw(g);
+        Util.drawCentered(g, name, x + (image.getWidth(null) / 2), y - 75);
+        Util.drawCentered(g, (role != Type.MENTOR && role != Type.NONE ? "Preferred Role: " : "") + preferredRole.toString(), x + (image.getWidth(null) / 2), y - 60);
+        Util.drawCentered(g, "Skill: " + skill, x + (image.getWidth(null) / 2), y - 45);
+        Util.drawCentered(g, "Likability: " + likability, x + (image.getWidth(null) / 2), y - 30);
+        if (role != Type.MENTOR) Util.drawCentered(g, "Years in FRC: " + yearsInFRC, x + (image.getWidth(null) / 2), y - 15);
     }
     
     public static Person generatePerson(Team team) {
@@ -53,19 +60,17 @@ public class Person extends Entity {
             }
         }
         if (Util.randomInt(1, 20) == 1) { //The chance of making a GENIUS          
-            p.skill = Util.randomInt(15, 20) / 10; //Geniuses are very skilled
-            p.likability = Util.randomInt(0, 10) / 10; //Geniuses may not be very likable
+            p.skill = ((double)Util.randomInt(15, 20)) / 10; //Geniuses are very skilled
+            p.likability = ((double)Util.randomInt(0, 10)) / 10; //Geniuses may not be very likable
         } else {
-            p.skill = Util.randomInt(8, 12) / 10;
-            p.likability = Util.randomInt(5, 15) / 10;
+            p.skill = ((double)Util.randomInt(8, 12)) / 10;
+            p.likability = ((double)Util.randomInt(5, 15)) / 10;
         }
         p.yearsInFRC = Util.randomInt(1, 5);
         if (p.yearsInFRC == 5) {
             p.role = Type.MENTOR;
-            p.preferredRole = Type.NONE;
+            p.preferredRole = Type.MENTOR;
         }
-        p.x = Util.randomInt(10, 780);
-        p.y = Util.randomInt(10, 580);
         return p;
     }
 }

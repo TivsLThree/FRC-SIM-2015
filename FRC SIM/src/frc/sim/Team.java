@@ -13,11 +13,10 @@ public class Team {
     public int age = 0;
     public double popularity = 0;
     
-    public Team(String name, int number, Color color, List<Person> members) {
+    public Team(String name, int number, Color color) {
         this.name = name;
         this.number = number;
         this.color = color;
-        this.members = members;
     }
     
     public double getSkill() {
@@ -34,14 +33,13 @@ public class Team {
             number = Util.randomInt(10, 5000);
         } while (isNumberTaken(number));
         
-        Team t = new Team(Generator.genName(), number, new Color(Util.randomInt(0, 255), Util.randomInt(0, 255),Util.randomInt(0, 255)), new ArrayList<>());
+        Team t = new Team(Generator.genName(), number, new Color(Util.randomInt(0, 255), Util.randomInt(0, 255),Util.randomInt(0, 255)));               
+        List<Person> members = new ArrayList<>();
+        for (int i=0; i < Util.randomInt(10, (int) 25); i++) {
+            members.add(Person.generatePerson(t));
+        }   
         
         t.popularity = Util.randomInt(-5, 15) / 10;
-        
-        List<Person> members = new ArrayList<>();
-        for (int i=0; i < Util.randomInt((int) Math.round(10 * t.popularity), (int) Math.round(25 * t.popularity)); i++) {
-            members.add(Person.generatePerson(t));
-        }      
         t.members = members;       
         t.age = Util.randomInt(0, 10); 
         return t;

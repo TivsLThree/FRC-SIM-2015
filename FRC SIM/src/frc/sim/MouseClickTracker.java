@@ -13,7 +13,6 @@ public class MouseClickTracker implements MouseListener {
                 Point p = Board.self.getLocationOnScreen();
                 int mouseX = m.getXOnScreen() - p.x; 
                 int mouseY = m.getYOnScreen() - p.y;
-                System.out.println("Click at " + mouseX + " " + mouseY);
                 if (e.box().contains(mouseX, mouseY)) {
                     e.clicked();
                     return;
