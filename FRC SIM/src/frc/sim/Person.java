@@ -51,9 +51,7 @@ public class Person extends Entity {
     }
     
     public static Person generatePerson(Team team) {
-        String name = "Bob";
-        //TODO random name
-        Person p = new Person(name, team);
+        Person p = new Person(Generator.genName(), team);
         if (Util.randomInt(1, 3) == 1) {
             switch (Util.randomInt(1, 4)) {
                 case 1:

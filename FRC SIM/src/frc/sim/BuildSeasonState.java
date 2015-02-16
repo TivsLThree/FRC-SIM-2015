@@ -35,7 +35,7 @@ public class BuildSeasonState extends State {
                 if (week != 6) {
                     day = Day.SATURDAY;
                 } else {
-                    //TODO end build season
+                    //TODO go to CompetitionState
                 }
             }           
         });

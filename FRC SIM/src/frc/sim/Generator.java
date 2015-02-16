@@ -5,7 +5,7 @@ import java.util.Random;
 public class Generator {
 
     static String[] nouns = {"Labratory", "Bacon", "Bolt", "Volt", "Swamp",
-        "Evolution", "Atom", "Robots", "Electricity", "Garage", "Pirate", "Pros"};
+        "Evolution", "Atom", "Robots", "Electricity", "Garage", "Pirates", "Pros"};
     static String[] adj = {"Energetic", "Exploding", "Black", "Flaming", "Fallicious",
         "Glorious", "Imaginary", "Octo", "Bizarre", "Six", "Automatic"};
 
@@ -21,16 +21,15 @@ public class Generator {
         return name;
     }
     static String[] first = {"Taylor", "Jacob", "Levi", "Ryan", "Kevin", "Garry", "Bob",
-        "Felicia", "Jonathon", "Michael", "Robert", "Sean", "Spencer", "David", "Richard",
+        "Felicia", "Jonathon", "Michael", "Robert", "Sean", "Fredrick", "Spencer", "David", "Richard",
         "Brian", "George", "Nathan", "Henry", "Adolf", "Larry", "Morris", "Marry", "Jordan",
-        "Dean"
+        "Dean", "Barry", "Philip", "Mary", "Sarah", "Anderson"
 
     };
-    static String[] last = {"Taylor", "Shavell", "Hitler", "Smalls", "Little", "Jordan", "Adams",
-        "Ryce", "Abel", "Stoff", "Fisher", "Smith", "Doe", "Whitten", "Parsons", "Ali", "Marceli",
+    static String[] last = {"Taylor", "Shavell", "Walters", "Smalls", "Little", "Jordan", "Adams",
+        "Ryce", "Abel", "Stoff", "Fisher", "Smith", "Doe", "Whitten", "Moncayo", "Parsons", "Ali", "Marceli",
         "Pollack", "Williams", "Johnston", "Williamson", "Parker", "Spencer", "Kamen", "Nickson",
-        "Bisque", "Levy", "Mikel", "Jarkerb"
-
+        "Bisque", "Levy", "Mikel", "Jarkerb", "Perkins"
     };
 
     public static String genName() {
