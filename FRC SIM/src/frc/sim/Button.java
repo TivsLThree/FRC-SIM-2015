@@ -2,7 +2,6 @@ package frc.sim;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
-import javax.swing.ImageIcon;
 
 public class Button extends Entity {
     
@@ -12,7 +11,7 @@ public class Button extends Entity {
     public Button(int x, int y, String imagePath1, String imagePath2) {
         super(x, y, imagePath1);
         drawImage = image;
-        pressedImage = new ImageIcon(this.getClass().getResource(imagePath2)).getImage();
+        pressedImage = Util.toImage(getClass(), imagePath2);
     }
     
     @Override

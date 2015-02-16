@@ -22,7 +22,7 @@ public class Entity {
     public Entity(int x, int y, String imagePath) {
         this.x = x;
         this.y = y;
-        image = new ImageIcon(this.getClass().getResource(imagePath)).getImage();
+        image = Util.toImage(getClass(), imagePath);
     }
     
     public Rectangle box() {
