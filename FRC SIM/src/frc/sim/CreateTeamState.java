@@ -2,6 +2,7 @@ package frc.sim;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -16,10 +17,18 @@ public class CreateTeamState extends State {
         String[] colorString = JOptionPane.showInputDialog(null, "Please put your team color's RGB values like so: 'red green blue'").split(" ");
         Color color = new Color(Integer.parseInt(colorString[0]), Integer.parseInt(colorString[1]), Integer.parseInt(colorString[2]));
         setupTeam(name, number, color);
-        entities.add(new Button(400, 400, "test.png", "test2.png") {
+        entities.add(new Button(200, 400, "buttons/redo.png") {
             @Override
-            public void clicked() {
+            public void clicked(MouseEvent m) {
                 setupTeam(name, number, color);
+            }
+        });
+        
+        entities.add(new Button(600 - 64, 400, "buttons/confirm.png") {            
+            @Override
+            public void clicked(MouseEvent m) {
+                Main.team = t;
+                Board.state = new BuildSeasonState();
             }
         });
     }

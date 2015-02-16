@@ -5,13 +5,14 @@ import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Rectangle;
-import javax.swing.ImageIcon;
+import java.awt.event.MouseEvent;
 
 public class Entity {
     
     public int x = 0;
     public int y = 0;
     public Image image = null;
+    public boolean mouseIn = false;
     public boolean mouseWasIn = false;
     
     public Entity(int x, int y) {
@@ -38,7 +39,7 @@ public class Entity {
         
         int mouseX = p2.x - p.x;
         int mouseY = p2.y - p.y;
-        
+         
         if (box().contains(mouseX, mouseY)) {
             if (!mouseWasIn) {
                 mouseEnter();
@@ -56,9 +57,13 @@ public class Entity {
         }
     }    
           
-    public void mouseEnter() {}
+    public void mouseEnter() {
+        mouseIn = true;
+    }
     
-    public void mouseLeave() {}
+    public void mouseLeave() {
+        mouseIn = false;
+    }
     
-    public void clicked() {}
+    public void clicked(MouseEvent m) {}
 }
