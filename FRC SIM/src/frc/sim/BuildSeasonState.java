@@ -16,7 +16,8 @@ public class BuildSeasonState extends State {
     public int week = 1;
     public Person selected = null;
     public Timer timer;
-    public double code = 0;
+    public double teleCode = 0;
+    public double autoCode = 0;
     public boolean pause = true;
 
     public BuildSeasonState() {
@@ -119,39 +120,83 @@ public class BuildSeasonState extends State {
                 }
             }
         });
-        entities.add(new Button(600, 50, "buttons/unpause.png") {
+        entities.add(new Button(650, 10, "buttons/unpause.png") {
 
             @Override
             public void clicked(MouseEvent m) {
-                pause = !pause;
-                
+                pause = false;
+
             }
 
             @Override
             public void tick() {
                 super.tick();
-                visible = true;
+                visible = pause;
 
+            }
+        });
+        entities.add(new Button(650, 50, "buttons/pause.png") {
+
+            @Override
+            public void clicked(MouseEvent m) {
+                pause = true;
+
+            }
+
+            @Override
+            public void tick() {
+                super.tick();
+                visible = !pause;
+            }
+        });
+        entities.add(new Button(200, 500, "buttons/button-3.png") {
+            @Override
+            public void clicked(MouseEvent m) {
+                if (selected != null) {
+                    selected.project = 1;
+                }
+
+            }
+
+            @Override
+            public void tick() {
+                super.tick();
+                visible = selected != null && selected.role == Type.PROGRAMMING;
+            }
+        });
+        entities.add(new Button(400, 500, "buttons/button-3.png") {
+            @Override
+            public void clicked(MouseEvent m) {
+                if (selected != null) {
+                    selected.project = 2;
+                }
+
+            }
+
+            @Override
+            public void tick() {
+                super.tick();
+                visible = selected != null && selected.role == Type.PROGRAMMING;
             }
         });
     }
 
     @Override
+
     public void draw(Graphics2D g) {
         super.draw(g);
+        Color oldColor = g.getColor();
         g.drawString(day.toString() + ", Week " + week, 10, 20);
         for (Person p : Main.team.members) {
-
             p.draw(g);
             p.tick();
         }
-
+        drawMemberStats(g);
+        drawCode(g, oldColor);
+        drawTeamStats(g);
         if (selected != null) {
             Rectangle r = selected.box();
-            Color oldColor = g.getColor();
-            g.drawString(selected.preferredRole.toString(), selected.x, selected.y);
-            g.drawString(selected.role.toString(), selected.x, selected.y + 32);
-            g.drawString(String.valueOf(selected.skill), selected.x - 32, selected.y + 16);
+
             g.setColor(Color.GREEN);
 
             g.drawRect(r.x, r.y, r.width, r.height);
@@ -168,6 +213,7 @@ public class BuildSeasonState extends State {
             if (p.box().contains(mouseX, mouseY)) {
                 System.out.println("Selected a dude");
                 selected = p;
+
                 return;
             }
         }
@@ -186,14 +232,54 @@ public class BuildSeasonState extends State {
 
     public void daily() {
         doCode();
-        System.out.println(code);
+        System.out.println(teleCode);
+    }
+
+    public void drawTeamStats(Graphics2D g) {
+        g.drawString("Programmers: " + countMembers(Type.PROGRAMMING), Main.self.getWidth() - 125, Main.self.getHeight() - 130);
+        g.drawString("Mechanics: " + countMembers(Type.MECHANICAL), Main.self.getWidth() - 125, Main.self.getHeight() - 145);
+        g.drawString("Public Relations: " + countMembers(Type.PR), Main.self.getWidth() - 125, Main.self.getHeight() - 160);
+        g.drawString("Mentors: " + countMembers(Type.MENTOR), Main.self.getWidth() - 125, Main.self.getHeight() - 185);
+    }
+
+    public void drawMemberStats(Graphics2D g) {
+
+        if (selected != null) {
+            g.drawString("Name: " + selected.name, Main.self.getWidth() - 150, Main.self.getHeight() - 115);
+            g.drawString("Likability: " + selected.likability, Main.self.getWidth() - 150, Main.self.getHeight() - 100);
+            g.drawString("Skill: " + selected.skill, Main.self.getWidth() - 150, Main.self.getHeight() - 85);
+            g.drawString("Preferred Role: " + selected.preferredRole, Main.self.getWidth() - 150, Main.self.getHeight() - 70);
+            g.drawString("Role: " + selected.role, Main.self.getWidth() - 150, Main.self.getHeight() - 55);
+
+        }
+    }
+
+    public void drawCode(Graphics2D g, Color oldColor) {
+
+        g.setColor(Color.getHSBColor(200, 100, 100));
+        g.fillRect(1, Main.self.getHeight() - 50, (int) teleCode * 3, 10);
+        g.setColor(Color.RED);
+        g.fillRect(1, Main.self.getHeight() - 75, (int) autoCode * 3, 10);
+        g.setColor(oldColor);
     }
 
     public void doCode() {
         for (Person p : Main.team.members) {
-            if (p.role == Type.PROGRAMMING) {
-                code += (p.preferredRole != Type.PROGRAMMING && p.preferredRole != Type.NONE) ? (1 * p.skill * 0.9) : (1 * p.skill);
+            if (p.role == Type.PROGRAMMING && p.project == 1) {
+                teleCode += (p.preferredRole != Type.PROGRAMMING && p.preferredRole != Type.NONE) ? (1 * p.skill * 0.9) : (1 * p.skill);
+            } else if (p.role == Type.PROGRAMMING && p.project == 2) {
+                autoCode += (p.preferredRole != Type.PROGRAMMING && p.preferredRole != Type.NONE) ? (1 * p.skill * 0.9) : (1 * p.skill);
             }
         }
+    }
+
+    public int countMembers(Type type) {
+        int members = 0;
+        for (Person p : Main.team.members) {
+            if (p.role == type) {
+                members++;
+            }
+        }
+        return members;
     }
 }

@@ -13,6 +13,7 @@ public class Person extends Entity {
     public double skill = 1.0;
     public double likability = 1.0;
     public int yearsInFRC = 0;
+    public int project = 0;
     public Team team = null;
     
     public Person(String name, Team team) {
